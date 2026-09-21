@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">極簡天氣</string>
+    <string name="widget_desc">顯示目前所在地氣溫，底色透明度可自訂</string>
+    <string name="config_title">底色透明度</string>
+    <string name="config_confirm">完成</string>
+</resources>
