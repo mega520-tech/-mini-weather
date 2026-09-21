@@ -1,6 +1,7 @@
 package com.bruce.miniweather
 
 import android.content.Context
+import android.content.Intent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
@@ -32,15 +33,14 @@ class WeatherWidget : GlanceAppWidget() {
         val opacityPct = widgetPrefs.getInt(opacityKey(appWidgetId), DEFAULT_OPACITY)
         val bgColor = Color.White.copy(alpha = opacityPct / 100f)
 
+        val refreshIntent = Intent(context, MainActivity::class.java)
+
         provideContent {
-            // 點一下 = 立即刷新天氣。
-            // 底色透明度設定不用另外做按鈕：長按小工具，系統會自動跳出「編輯」，
-            // 因為 weather_widget_info.xml 有標記 reconfigurable + configure activity。
             Box(
                 modifier = GlanceModifier
                     .fillMaxSize()
                     .background(bgColor)
-                    .clickable(actionStartActivity<MainActivity>()),
+                    .clickable(actionStartActivity(refreshIntent)),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
